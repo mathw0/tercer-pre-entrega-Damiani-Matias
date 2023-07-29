@@ -1,0 +1,62 @@
+{% extends "estaticos.html" %}
+
+{% block contenido %}
+    <div class="container">
+        <h1 class="text-center mt-4 mb-5">Resultados de la búsqueda</h1>
+        {% if resultados %}
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col" style="width: 50px;">N°</th>
+                            <th scope="col">Nombre y Apellido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for resultado in resultados %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ resultado.nombre }} {{ resultado.apellido }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center">No se encontraron resultados.</p>
+        {% endif %}
+    </div>
+{% endblock contenido %}
+
+<style>
+    :root {
+        --bs-body-bg: #e2cb9fce;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+    th, td {
+        text-align: center;
+        padding: 10px;
+    }
+    th {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    th:first-child, td:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+    th:last-child, td:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+</style>

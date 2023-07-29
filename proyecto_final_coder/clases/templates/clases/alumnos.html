@@ -1,0 +1,60 @@
+{% extends "estaticos.html" %}
+
+{% block contenido %}
+    <h1 style="text-align: center; margin-bottom: 20px; color: #000;">Ultimos registros para las becas:</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr style="background-color: #fcd3bc; color: #654321;">
+                    <th style="padding: 8px 10px; border-radius: 8px 0 0 8px; width: 50px;">N°</th>
+                    <th style="padding: 8px 10px; width: auto;">Nombre y Apellido</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos_list %}
+                    <tr style="background-color: #fef3e0; color: #654321;">
+                        <td style="padding: 8px 10px; border-right: 1px solid #f8bba4; text-align: center;">{{ forloop.counter }}</td>
+                        <td style="padding: 8px 10px; border-left: 1px solid #f8bba4;">{{ alumno.nombre }} {{ alumno.apellido }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <style>
+        :root {
+            --bs-body-bg: #e2cb9fce;
+        }
+        .table-container {
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fde2d9; /* Color piel claro */
+            border: 1px solid #f8bba4; /* Borde piel más oscuro */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            text-align: left;
+        }
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        tr:hover {
+            background-color: #fcd3bc; /* Fila seleccionada piel claro */
+        }
+        th:first-child, td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        th:last-child, td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    </style>
+{% endblock contenido %}

@@ -1,0 +1,45 @@
+{% extends "estaticos.html" %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="display-4">Bienvenidos a The Developer House</h1>
+            <p class="lead">Somos un Instituto que abrirá sus puertas en 2024. Podrás solicitar becas de hasta el 100% de descuento, tomaremos en cuenta todos los registros. También nos encontramos en búsqueda de nuevos profesores.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8 mx-auto">
+            <h2 class="mb-3">Realiza tu consulta</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellido:</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="mb-3">
+                    <label for="consulta" class="form-label">Consulta:</label>
+                    <textarea class="form-control" id="consulta" name="consulta" rows="5" maxlength="400" placeholder="Realiza tu consulta. Máximo 400 caracteres." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar consulta</button>
+            </form>
+            {% if error_message %}
+                <div class="alert alert-danger mt-3">{{ error_message }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

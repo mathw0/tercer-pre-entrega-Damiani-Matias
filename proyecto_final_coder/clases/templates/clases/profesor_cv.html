@@ -1,0 +1,70 @@
+{% extends "estaticos.html" %}
+
+{% block contenido %}
+
+<h1></h1>
+
+<style>
+    .form-register {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .center-content {
+        text-align: center;
+    }
+
+    .botons {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #DCAE70;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .botons:hover {
+        background-color: #45a049;
+    }
+
+    /* Estilos para el campo de texto grande */
+    textarea[name="experiencia"] {
+        width: 100%;
+        height: 150px; /* Ajusta el tamaño deseado */
+        resize: vertical; /* Permite redimensionar verticalmente */
+    }
+</style>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-register">
+        <p class="center-content">
+            <h4>Formulario postulaciones, profesores.</h4>
+            <p>Nombre:</p>
+            <input type="text" name="nombre">
+            <p>Apellido:</p>
+            <input type="text" name="apellido">
+            <p>Documento:</p>
+            <input type="text" name="dni">
+            <p>Correo:</p>
+            <input type="text" name="email">
+            <p>Telefono:</p>
+            <input type="text" name="telefono">
+            <p>Experiencia:</p>
+            <!-- Utiliza la etiqueta textarea para el campo "Experiencia" -->
+            <textarea name="experiencia" maxlength="1000" placeholder="Cuentanos tu experiencia laboral, no mayor a 1000 caracteres. (opcional)"></textarea>
+            {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+            {% endif %}
+            <input class="botons" type="submit" value="Enviar">
+        </p>
+    </div>
+</form>
+{% endblock contenido %}
